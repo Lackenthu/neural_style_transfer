@@ -1,5 +1,6 @@
 require 'nn'
-
+require 'torch'
+require 'image'
 -- return a module that calculate a C*C matrix from a C*H*W matrix
 function GramModule()
 	local mod = nn.Sequential()

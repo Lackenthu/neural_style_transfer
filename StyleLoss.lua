@@ -24,7 +24,7 @@ function StyleLoss:updateOutput(input)
 	if self.mode =='active' then
 		self.pred = self.Gram:forward(input)
 		self.pred:div(input:nElement())
-		self.loss = self.crit:forward(self.G, self.target) * self.strength
+		self.loss = self.crit:forward(self.pred, self.target) * self.strength
 	else
 		print('-- skipping StyleLoss layer --')
 	end
@@ -37,7 +37,7 @@ end
 function StyleLoss:updateGradInput(input, gradOutput)
 	local gradCrit = nil
 	if self.mode == 'active' then
-		gradCrit = self.crit:backward(self.G, self.target)
+		gradCrit = self.crit:backward(self.pred, self.target)
 		gradCrit:div(input:nElement())
 		self.gradInput = self.Gram:backward(input, gradCrit) * self.strength
 	end
