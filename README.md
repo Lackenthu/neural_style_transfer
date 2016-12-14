@@ -5,7 +5,7 @@ Make sure to download VGG-19 before running the script.
 
 Basic Usage:
 
-th neuralTransfer.lua -cuda \
+    th neuralTransfer.lua -cuda \
 
     -content_weight 5e0 \
   
@@ -14,3 +14,5 @@ th neuralTransfer.lua -cuda \
     -content_image PATH/TO/CONTENT \
   
     -style_image PATH/TO/STYLE \
+
+For more options, please see the source file **neuralTransfer.lua**
